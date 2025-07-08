@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "ficommitgen-vscode.helloWorld",
-        "title": "Hello World"
+        "command": "ficommitgen-vscode.generateCommit",
+        "title": "Ficommitgen: Generate Commit"
       }
     ]
   },

@@ -2,6 +2,7 @@
   "name": "ficommitgen-vscode",
   "displayName": "ficommitgen-vscode",
   "description": "Commit generation extension for Visual Studio Code",
+  "publisher": "feri-irawan",
   "author": {
     "name": "feri-irawan",
     "url": "https://github.com/feri-irawan"

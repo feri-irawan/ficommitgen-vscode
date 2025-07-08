@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.1] - 2025-07-08
+
+### 🐛 Bug Fixes
+
+- *(extension)* Move extension icon to media directory
+
 ## [0.2.0] - 2025-07-08
 
 ### 🚀 Features
@@ -13,6 +19,7 @@ All notable changes to this project will be documented in this file.
 - *(license)* Add license
 - *(extension)* Add publisher
 - *(extension)* Improve discoverability and presentation
+- *(release)* Bump version to v0.2.0
 
 ## [0.1.0] - 2025-07-08
 

@@ -19,6 +19,10 @@
         "command": "ficommitgen-vscode.generateCommit",
         "title": "Ficommitgen: Generate Commit",
         "icon": "$(sparkle)"
+      },
+      {
+        "command": "ficommitgen-vscode.setToken",
+        "title": "Ficommitgen: Set Token"
       }
     ],
     "menus": {

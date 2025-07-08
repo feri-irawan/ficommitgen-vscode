@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import pickRepository from '../lib/pickRepository';
-import { getGitDiff } from '../lib/getDiff';
+import getGitDiff from '../lib/getDiff';
 import getRecentCommits from '../lib/getRecentCommits';
 import generateCommit from '../lib/generateCommit';
 

@@ -30,6 +30,8 @@ You can generate a commit message in two ways:
 1. Open the Command Palette (`Ctrl+Shift+P` on Windows/Linux, `Cmd+Shift+P` on macOS, or `F1`)
 2. Select **"Ficommitgen: Generate Commit"**
 
+> Note: If you have staged changes, it will try to generate commit message based on staged changes first. If not, it will generate commit message based on unstaged changes.
+
 ### Set Token
 
 To reset or update your API token:

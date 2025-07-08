@@ -5,15 +5,26 @@ import { Repository } from '../types';
 
 const execAsync = promisify(exec);
 
-export async function getGitDiff(repo: Repository): Promise<string> {
+const getGitDiff = async (repo: Repository): Promise<string> => {
   try {
-    const { stdout } = await execAsync('git diff', {
-      cwd: repo.rootUri.fsPath,
-    });
-    return stdout;
+    const cwd = repo.rootUri.fsPath;
+
+    // Try to get diff from staged changes first
+    const { stdout: stagedDiff } = await execAsync('git diff --cached', { cwd });
+
+    if (stagedDiff.trim().length > 0) {
+      return stagedDiff;
+    }
+
+    // If no staged changes, get unstaged changes
+    const { stdout: unstagedDiff } = await execAsync('git diff', { cwd });
+
+    return unstagedDiff;
   } catch (error: unknown) {
     console.error('Failed to run git diff:', error);
     vscode.window.showErrorMessage('Failed to get `git diff` result.');
     return '';
   }
-}
+};
+
+export default getGitDiff;

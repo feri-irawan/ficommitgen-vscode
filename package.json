@@ -9,15 +9,27 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "ficommitgen-vscode.generateCommit",
-        "title": "Ficommitgen: Generate Commit"
+        "title": "Ficommitgen: Generate Commit",
+        "icon": "$(sparkle)"
       }
-    ]
+    ],
+    "menus": {
+      "scm/title": [
+        {
+          "command": "ficommitgen-vscode.generateCommit",
+          "when": "scmProvider == git",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",

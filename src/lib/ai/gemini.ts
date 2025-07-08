@@ -34,13 +34,8 @@ const generateText = async ({ model, apiKey, systemInstruction, contents }: Gene
     ],
   };
 
-  try {
-    const response = await axios.post(url, data, { headers });
-    return response.data.candidates[0].content.parts[0].text as string;
-  } catch (error) {
-    console.error('Gagal menghasilkan teks:', error);
-    return undefined;
-  }
+  const response = await axios.post(url, data, { headers });
+  return response.data.candidates[0].content.parts[0].text as string;
 };
 
 export default generateText;

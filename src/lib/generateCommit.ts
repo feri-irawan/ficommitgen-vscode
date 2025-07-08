@@ -1,5 +1,6 @@
 import getOrRequestToken from './getOrRequestToken';
 import generateText from './ai/gemini';
+import * as vscode from 'vscode';
 
 const systemInstruction = `
 You are a commit message generator that strictly follows the Conventional Commits specification.
@@ -44,14 +45,20 @@ ${diff}
     return;
   }
 
-  const text = await generateText({
-    model: 'gemini-2.5-flash',
-    apiKey,
-    systemInstruction,
-    contents,
-  });
+  try {
+    const text = await generateText({
+      model: 'gemini-2.5-flash',
+      apiKey,
+      systemInstruction,
+      contents,
+    });
 
-  return text?.trim();
+    return text?.trim();
+  } catch (error) {
+    console.error('Gagal menghasilkan commit message:', error);
+    vscode.window.showErrorMessage('❌ Gagal menghasilkan commit message.');
+    return undefined;
+  }
 };
 
 export default generateCommit;

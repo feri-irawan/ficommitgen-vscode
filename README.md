@@ -1,71 +1,71 @@
-# ficommitgen-vscode README
+# ficommitgen-vscode
 
-This is the README for your extension "ficommitgen-vscode". After writing up a brief description, we recommend including the following sections.
+`ficommitgen-vscode` is a Visual Studio Code extension that generates commit messages automatically using Google Gemini AI (currently) based on changes (`git diff`) in your Git repository.
 
-## Features
+## ✨ Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- 🔍 Automatically reads `git diff` and `git log` for more accurate context
+- 🧠 Generates commit messages using AI, following the [Conventional Commits](https://www.conventionalcommits.org) specification
+- 📋 Automatically inserts the generated message into the Source Control input box
+- 🧩 Integrated with VS Code's built-in Git UI (button in the Source Control title)
+- 🛡️ API token is securely stored using VS Code's SecretStorage (not `settings.json`)
 
-For example if there is an image subfolder under your extension project workspace:
+## 🛠️ Requirements
 
-\!\[feature X\]\(images/feature-x.png\)
+- VS Code version 1.101.0 or later
+- A Git repository must be initialized (`git init`)
+- A Google Gemini API token (you'll be prompted on first use)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## 🚀 Usage
 
-## Requirements
+### Generate Commit Message
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+You can generate a commit message in two ways:
 
-## Extension Settings
+1. Open the Source Control panel
+2. Click the "Generate Commit" button (sparkle ✨ icon) in the Source Control title
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+**OR**
 
-For example:
+1. Open the Command Palette (`Ctrl+Shift+P` on Windows/Linux, `Cmd+Shift+P` on macOS, or `F1`)
+2. Select **"Ficommitgen: Generate Commit"**
 
-This extension contributes the following settings:
+### Set Token
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+To reset or update your API token:
 
-## Known Issues
+1. Open the Command Palette
+2. Select **"Ficommitgen: Set Token"**
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+## ⚙️ Extension Settings
 
-## Release Notes
+There are currently no settings configurable via `settings.json`.
 
-Users appreciate release notes as you update your extension.
+## 🐛 Known Issues
 
-### 1.0.0
+- If your project is not initialized as a Git repository, the extension will not work.
+- If the Gemini API token is missing, incorrect, or rate-limited, commit generation will fail.
 
-Initial release of ...
+## 📦 Build & Install Locally
 
-### 1.0.1
+To build and install the extension manually:
 
-Fixed issue #.
+```bash
+npm install -g vsce
+vsce package
+code --install-extension ficommitgen-vscode-0.1.0.vsix
+```
 
-### 1.1.0
+## 🤝 Contributing
 
-Added features X, Y, and Z.
+To contribute to this project:
+
+1. Fork the repository
+2. Create a new branch for your feature or fix
+3. Commit your changes
+4. Push your branch
+5. Open a pull request
 
 ---
 
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+**Enjoy using `ficommitgen-vscode`! 🎉**

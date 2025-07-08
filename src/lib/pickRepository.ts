@@ -6,14 +6,14 @@ const pickRepository = async (): Promise<Repository | undefined> => {
   const gitApi = gitExtension?.getAPI(1);
 
   if (!gitApi) {
-    vscode.window.showErrorMessage('Git extension tidak tersedia.');
+    vscode.window.showErrorMessage('Git extension is not available.');
     return undefined;
   }
 
   const repos = gitApi.repositories;
 
   if (repos.length === 0) {
-    vscode.window.showErrorMessage('Tidak ada repository Git ditemukan.');
+    vscode.window.showErrorMessage('No Git repository found.');
     return undefined;
   }
 
@@ -28,7 +28,7 @@ const pickRepository = async (): Promise<Repository | undefined> => {
       repo,
     })),
     {
-      placeHolder: 'Pilih repository Git yang ingin digunakan',
+      placeHolder: 'Select the Git repository to use',
     }
   );
 

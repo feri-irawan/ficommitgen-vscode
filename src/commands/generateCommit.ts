@@ -8,25 +8,25 @@ export const registerGenerateCommitCommand = (context: vscode.ExtensionContext) 
   const disposable = vscode.commands.registerCommand('ficommitgen-vscode.generateCommit', async () => {
     const repo = await pickRepository();
     if (!repo) {
-      vscode.window.showErrorMessage('Tidak ada repository Git yang ditemukan.');
+      vscode.window.showErrorMessage('No Git repository found.');
       return;
     }
 
     const [diff, recent] = await Promise.all([getGitDiff(repo), getRecentCommits(repo)]);
     if (!diff) {
-      vscode.window.showErrorMessage('Tidak ada perubahan yang ditemukan.');
+      vscode.window.showErrorMessage('No changes found.');
       return;
     }
 
-    vscode.window.showInformationMessage('Menghasilkan commit message...');
+    vscode.window.showInformationMessage('Generating commit message...');
     const commit = await generateCommit(diff, recent);
     if (!commit) {
-      vscode.window.showErrorMessage('Gagal menghasilkan commit message.');
+      vscode.window.showErrorMessage('Failed to generate commit message.');
       return;
     }
 
     repo.inputBox.value = commit;
-    vscode.window.showInformationMessage('Commit message dihasilkan!');
+    vscode.window.showInformationMessage('Commit message generated!');
   });
 
   context.subscriptions.push(disposable);

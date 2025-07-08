@@ -55,8 +55,8 @@ ${diff}
 
     return text?.trim();
   } catch (error) {
-    console.error('Gagal menghasilkan commit message:', error);
-    vscode.window.showErrorMessage('Gagal menghasilkan commit message.');
+    console.error('Failed to generate commit message:', error);
+    vscode.window.showErrorMessage('Failed to generate commit message.');
     return undefined;
   }
 };

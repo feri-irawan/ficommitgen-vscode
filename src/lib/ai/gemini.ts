@@ -1,5 +1,4 @@
 import axios from 'axios';
-import getOrRequestToken from '../getOrRequestToken';
 
 type GenerateTextParams = {
   model: 'gemini-2.5-flash';

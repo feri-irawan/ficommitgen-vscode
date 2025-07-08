@@ -5,15 +5,15 @@ const TOKEN_KEY = 'ficommitgen.token';
 
 export const showInputToken = async () => {
   const token = await vscode.window.showInputBox({
-    prompt: 'Masukkan token API Gemini kamu',
+    prompt: 'Enter your Gemini API token',
     ignoreFocusOut: true,
     password: true,
-    placeHolder: 'Contoh: AIzaSy...',
-    validateInput: (value) => (value.trim().length === 0 ? 'Token tidak boleh kosong' : undefined),
+    placeHolder: 'Example: AIzaSy...',
+    validateInput: (value) => (value.trim().length === 0 ? 'Token cannot be empty' : undefined),
   });
 
   if (!token) {
-    vscode.window.showWarningMessage('Token tidak dimasukkan.');
+    vscode.window.showWarningMessage('Token not entered.');
     return;
   }
 
@@ -30,7 +30,7 @@ export const registerSetTokenCommand = (context: vscode.ExtensionContext) => {
     }
 
     await context.secrets.store(TOKEN_KEY, newToken);
-    vscode.window.showInformationMessage('Token berhasil disimpan (ditimpa jika sebelumnya sudah ada).');
+    vscode.window.showInformationMessage('Token successfully saved (overwritten if already exists).');
   });
 
   context.subscriptions.push(disposable);

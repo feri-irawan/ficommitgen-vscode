@@ -13,7 +13,7 @@ export const showInputToken = async () => {
   });
 
   if (!token) {
-    vscode.window.showWarningMessage('⚠️ Token tidak dimasukkan.');
+    vscode.window.showWarningMessage('Token tidak dimasukkan.');
     return;
   }
 
@@ -30,7 +30,7 @@ export const registerSetTokenCommand = (context: vscode.ExtensionContext) => {
     }
 
     await context.secrets.store(TOKEN_KEY, newToken);
-    vscode.window.showInformationMessage('✅ Token berhasil disimpan (ditimpa jika sebelumnya sudah ada).');
+    vscode.window.showInformationMessage('Token berhasil disimpan (ditimpa jika sebelumnya sudah ada).');
   });
 
   context.subscriptions.push(disposable);

@@ -13,7 +13,7 @@ export async function getGitDiff(repo: Repository): Promise<string> {
     return stdout;
   } catch (error: unknown) {
     console.error('Gagal menjalankan git diff:', error);
-    vscode.window.showErrorMessage('❌ Gagal mendapatkan hasil `git diff`.');
+    vscode.window.showErrorMessage('Gagal mendapatkan hasil `git diff`.');
     return '';
   }
 }

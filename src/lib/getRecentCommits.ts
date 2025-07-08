@@ -13,7 +13,7 @@ const getRecentCommits = async (repo: Repository, count = 20): Promise<string> =
     return stdout.trim();
   } catch (error) {
     console.error('Gagal mengambil commit log:', error);
-    vscode.window.showErrorMessage('❌ Gagal mendapatkan commit log.');
+    vscode.window.showErrorMessage('Gagal mendapatkan commit log.');
     return '';
   }
 };

@@ -16,7 +16,7 @@ const getOrRequestToken = async (): Promise<string | undefined> => {
     }
 
     await context.secrets.store(TOKEN_KEY, token);
-    vscode.window.showInformationMessage('✅ Token berhasil disimpan!');
+    vscode.window.showInformationMessage('Token berhasil disimpan!');
   }
 
   return token;

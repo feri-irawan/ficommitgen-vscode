@@ -1,17 +1,11 @@
 import * as vscode from 'vscode';
 import { exec } from 'child_process';
 import { promisify } from 'util';
-import pickRepository from './pickRepository';
+import { Repository } from '../types';
 
 const execAsync = promisify(exec);
 
-export async function getGitDiff(): Promise<string> {
-  const repo = await pickRepository();
-
-  if (!repo) {
-    return '';
-  }
-
+export async function getGitDiff(repo: Repository): Promise<string> {
   try {
     const { stdout } = await execAsync('git diff', {
       cwd: repo.rootUri.fsPath,

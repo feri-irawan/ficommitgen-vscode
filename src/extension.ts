@@ -5,6 +5,7 @@ import { getGitDiff } from './lib/getDiff';
 import pickRepository from './lib/pickRepository';
 import getRecentCommits from './lib/getRecentCommits';
 import { setContext } from './lib/context';
+import generateCommit from './lib/generateCommit';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -19,9 +20,7 @@ export function activate(context: vscode.ExtensionContext) {
   // Now provide the implementation of the command with registerCommand
   // The commandId parameter must match the command field in package.json
   const disposable = vscode.commands.registerCommand('ficommitgen-vscode.generateCommit', async () => {
-    // The code you place here will be executed every time your command is executed
-    // Display a message box to the user
-    vscode.window.showInformationMessage('Hello World from ficommitgen-vscode!');
+    vscode.window.showInformationMessage('🔄 Generating commit message...');
 
     // Pick repository
     const repo = await pickRepository();
@@ -29,18 +28,21 @@ export function activate(context: vscode.ExtensionContext) {
       return;
     }
 
-    // Get git diff
-    const diffOutput = await getGitDiff(repo);
+    // Get git diff and recent commits
+    const [diffOutput, recentCommits] = await Promise.all([getGitDiff(repo), getRecentCommits(repo)]);
     if (!diffOutput) {
       return;
     }
 
-    // Get recent commits
-    const recentCommits = await getRecentCommits(repo);
+    // Generate commit
+    const commit = await generateCommit(diffOutput, recentCommits);
+    if (!commit) {
+      return;
+    }
 
-    // Show git diff
-    vscode.window.showInformationMessage(`>>>>>> diffOutput <<<<<<<\n${diffOutput}`);
-    vscode.window.showInformationMessage(`>>>>>> recentCommits <<<<<<<\n${recentCommits}`);
+    // Set commit
+    repo.inputBox.value = commit;
+    vscode.window.showInformationMessage('✅ Commit message generated!');
   });
 
   context.subscriptions.push(disposable);

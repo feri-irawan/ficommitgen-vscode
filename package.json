@@ -1,6 +1,6 @@
 {
   "name": "ficommitgen-vscode",
-  "displayName": "ficommitgen-vscode",
+  "displayName": "Ficommitgen",
   "description": "Commit generation extension for Visual Studio Code",
   "publisher": "feri-irawan",
   "author": {
@@ -11,13 +11,26 @@
     "type": "git",
     "url": "https://github.com/feri-irawan/ficommitgen-vscode.git"
   },
+  "icon": "src/assets/icon.png",
   "license": "MIT",
   "version": "0.1.0",
   "engines": {
     "vscode": "^1.101.0"
   },
   "categories": [
-    "Other"
+    "AI",
+    "SCM Providers"
+  ],
+  "keywords": [
+    "ai",
+    "auto",
+    "commit",
+    "conventiona-commit",
+    "generate",
+    "message",
+    "vscode",
+    "git",
+    "scm"
   ],
   "activationEvents": [
     "onStartupFinished"

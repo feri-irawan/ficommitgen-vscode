@@ -18,7 +18,7 @@ const pickRepository = async (): Promise<Repository | undefined> => {
   }
 
   if (repos.length === 1) {
-    return repos[0]; // langsung ambil kalau cuma satu
+    return repos[0]; // Take the only one directly
   }
 
   const selectedPath = await vscode.window.showQuickPick(

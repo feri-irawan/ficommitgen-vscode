@@ -3,6 +3,7 @@ import pickRepository from '../lib/pickRepository';
 import getGitDiff from '../lib/getDiff';
 import getRecentCommits from '../lib/getRecentCommits';
 import generateCommit from '../lib/generateCommit';
+import getCustomInstruction from '../lib/getCustomInstruction';
 
 export const registerGenerateCommitCommand = (context: vscode.ExtensionContext) => {
   const disposable = vscode.commands.registerCommand('ficommitgen-vscode.generateCommit', async () => {
@@ -20,9 +21,14 @@ export const registerGenerateCommitCommand = (context: vscode.ExtensionContext) 
       return;
     }
 
+    // Get custom instruction from .ficommitgenrc (optional)
+    const customInstruction = await getCustomInstruction(repo);
+
     // Generate commit message
-    vscode.window.showInformationMessage('Generating commit message...');
-    const commit = await generateCommit(diff, recent);
+    vscode.window.showInformationMessage(
+      customInstruction ? 'Generating commit message with custom instruction...' : 'Generating commit message...'
+    );
+    const commit = await generateCommit(diff, recent, customInstruction);
     if (!commit) {
       vscode.window.showErrorMessage('Failed to generate commit message.');
       return;

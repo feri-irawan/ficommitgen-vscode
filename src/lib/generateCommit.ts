@@ -31,7 +31,7 @@ If the commit introduces a breaking change, include a 'BREAKING CHANGE:' section
 If related to an issue or ticket, include 'Closes #<issue_number>' at the end.
 `.trim();
 
-const generateCommit = async (diff: string, recentCommits: string) => {
+const generateCommit = async (diff: string, recentCommits: string, customInstruction?: string) => {
   const contents = `
 Recent commits:
 ${recentCommits}
@@ -49,7 +49,7 @@ ${diff}
     const text = await generateText({
       model: 'gemini-2.5-flash',
       apiKey,
-      systemInstruction,
+      systemInstruction: customInstruction || systemInstruction,
       contents,
     });
 

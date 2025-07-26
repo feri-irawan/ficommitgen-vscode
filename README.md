@@ -9,6 +9,7 @@
 - 📋 Automatically inserts the generated message into the Source Control input box
 - 🧩 Integrated with VS Code's built-in Git UI (button in the Source Control title)
 - 🛡️ API token is securely stored using VS Code's SecretStorage (not `settings.json`)
+- 📝 Customizable configuration in `ficommitgen.md`
 
 ## 🛠️ Requirements
 
@@ -41,7 +42,20 @@ To reset or update your API token:
 
 ## ⚙️ Extension Settings
 
-There are currently no settings configurable via `settings.json`.
+There are currently no settings configurable via `settings.json`. You can configure the extension by editing `ficommitgen.md`.
+
+```markdown
+---
+recentCommitsCount: 20
+---
+
+Your custom system instruction here...
+```
+
+### Configuration Options
+
+- `recentCommitsCount`: Number of recent commits to consider (default is 20)
+- The content of `ficommitgen.md` is passed as the system instruction to the AI (optional)
 
 ## 🐛 Known Issues
 

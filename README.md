@@ -69,7 +69,7 @@ To build and install the extension manually:
 ```bash
 npm install -g vsce
 vsce package
-code --install-extension ficommitgen-vscode-0.1.0.vsix
+code --install-extension ficommitgen-vscode-0.3.0.vsix
 ```
 
 ## 🤝 Contributing

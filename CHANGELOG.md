@@ -2,11 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2025-07-26
+
+### 🚀 Features
+
+- *(config)* Allow custom AI instructions via `ficommitgen.md`
+- *(config)* Support structured configuration in ficommitgen.md
+
+### 🚜 Refactor
+
+- *(git)* Clarify generate commit command flow
+
+### 📚 Documentation
+
+- *(readme)* Document `ficommitgen.md` configuration
+
+### ⚙️ Miscellaneous Tasks
+
+- *(package)* Fix typo in keywords
+
 ## [0.2.1] - 2025-07-08
 
 ### 🐛 Bug Fixes
 
 - *(extension)* Move extension icon to media directory
+
+### ⚙️ Miscellaneous Tasks
+
+- *(release)* Bump version to v0.2.1
 
 ## [0.2.0] - 2025-07-08
 
